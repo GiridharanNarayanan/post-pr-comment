@@ -7,16 +7,16 @@ async function run() {
         const token = core.getInput('github_token', { required: true });
 
         const client = new github.GitHub(token);
-        console.log(`owner: ${JSON.stringify(github.context.payload)}.`);
+        //console.log(`payload: ${JSON.stringify(github.context.payload)}.`);
 
         const pullRequestNumber = github.context.payload.number;
         const pullRequest = github.context.payload.pull_request;
-        console.log(`pullrequest: ${JSON.stringify(pullRequest)}.`);
+        //console.log(`pullrequest: ${JSON.stringify(pullRequest)}.`);
 
-        const owner = pullRequest.sender;
+        const owner = github.context.payload.pull_request.sender;
         console.log(`owner: ${JSON.stringify(owner)}.`);
 
-        const repo = pullRequest.repository.id;
+        const repo = github.context.payload.pull_request.repository;
         console.log(`repo: ${JSON.stringify(repo)}.`);
 
         const commentBody = "comment body";
