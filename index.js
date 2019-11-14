@@ -20,7 +20,7 @@ async function run() {
         
         const commentBody = "comment body";
         const response = await client.issues.createComment({
-            owner.login,
+            owner,
             repo,
             pullRequestNumber,
             commentBody
