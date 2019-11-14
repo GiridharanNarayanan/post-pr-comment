@@ -9,8 +9,12 @@ async function run() {
         const client = new github.GitHub(token);
         const pullRequestNumber = github.context.payload.number;
         const pullRequest = github.context.payload.pull_request;
-        const owner = pullRequest.sender.id;
+        const owner = pullRequest.sender;
+        console.log(`owner: ${JSON.stringify(owner)}.`);
+
         const repo = pullRequest.repository.id;
+        console.log(`repo: ${JSON.stringify(repo)}.`);
+
         const commentBody = "comment body";
         const response = await client.issues.createComment({
             owner,
