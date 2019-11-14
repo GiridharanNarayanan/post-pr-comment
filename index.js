@@ -16,11 +16,11 @@ async function run() {
         console.log(`repo: ${repo}.`);
 
         const owner = pullRequest.base.repo.owner;
-        console.log(`owner: ${JSON.stringify(owner)}.`);
+        console.log(`owner: ${owner.login}.`);
         
         const commentBody = "comment body";
         const response = await client.issues.createComment({
-            owner,
+            owner.login,
             repo,
             pullRequestNumber,
             commentBody
