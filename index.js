@@ -11,12 +11,16 @@ async function run() {
 
         const pullRequestNumber = github.context.payload.number;
         const pullRequest = github.context.payload.pull_request;
-        console.log(`pullrequest: ${JSON.stringify(pullRequest)}.`);
+        console.log(`pullrequest: ${pullRequest}.`);
+        //console.log(`pullrequest: ${JSON.stringify(pullRequest)}.`);
 
-        const owner = github.context.payload.pull_request.sender;
+        const prObject = JSON.parse(pullRequest);
+        console.log(`pullrequest: ${JSON.stringify(prObject)}.`);
+
+        const owner = prObject.sender;
         console.log(`owner: ${JSON.stringify(owner)}.`);
 
-        const repo = github.context.payload.pull_request.repository;
+        const repo = prObject.repository;
         console.log(`repo: ${JSON.stringify(repo)}.`);
 
         const commentBody = "comment body";
