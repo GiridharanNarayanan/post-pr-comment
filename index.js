@@ -14,7 +14,7 @@ async function run() {
         console.log(`pullrequest: ${pullRequest}.`);
         //console.log(`pullrequest: ${JSON.stringify(pullRequest)}.`);
 
-        const prObject = JSON.parse(pullRequest);
+        const prObject = JSON.parse(JSON.stringify(pullRequest));
         console.log(`pullrequest: ${JSON.stringify(prObject)}.`);
 
         const owner = prObject.sender;
