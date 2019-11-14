@@ -3,7 +3,6 @@ const github = require('@actions/github');
 
 async function run() {
     try {
-        const prId = core.getInput('pull_request_id');
         const token = core.getInput('github_token', { required: true });
 
         const client = new github.GitHub(token);
@@ -11,18 +10,14 @@ async function run() {
 
         const pullRequestNumber = github.context.payload.number;
         const pullRequest = github.context.payload.pull_request;
-        console.log(`pullrequest: ${pullRequest}.`);
-        //console.log(`pullrequest: ${JSON.stringify(pullRequest)}.`);
+        console.log(`pullrequest: ${JSON.stringify(pullrequest)}.`);
 
-        const prObject = JSON.parse(JSON.stringify(pullRequest));
-        console.log(`pullrequest: ${JSON.stringify(prObject)}.`);
+        const repo = prObject.base.repo.name;
+        console.log(`repo: ${repo}.`);
 
-        const owner = prObject.sender;
-        console.log(`owner: ${JSON.stringify(owner)}.`);
-
-        const repo = prObject.repository;
-        console.log(`repo: ${JSON.stringify(repo)}.`);
-
+        const owner = repo.owner.name;
+        console.log(`owner: ${owner}.`);
+        
         const commentBody = "comment body";
         const response = await client.issues.createComment({
             owner,
@@ -31,7 +26,7 @@ async function run() {
             commentBody
         });
 
-        console.log(`This is the given PR: ${prId}.`);
+        console.log(`This is the given PR: ${pullRequestNumber}.`);
     } catch (error) {
         core.setFailed(error.message);
     }
