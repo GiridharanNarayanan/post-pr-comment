@@ -12,7 +12,7 @@ async function run() {
         const pullRequest = github.context.payload.pull_request;
         console.log(`pullrequest: ${JSON.stringify(pullRequest)}.`);
 
-        const repo = prObject.base.repo.name;
+        const repo = pullRequest.base.repo.name;
         console.log(`repo: ${repo}.`);
 
         const owner = repo.owner.name;
