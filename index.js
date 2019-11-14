@@ -11,7 +11,7 @@ async function run() {
 
         const pullRequestNumber = github.context.payload.number;
         const pullRequest = github.context.payload.pull_request;
-        //console.log(`pullrequest: ${JSON.stringify(pullRequest)}.`);
+        console.log(`pullrequest: ${JSON.stringify(pullRequest)}.`);
 
         const owner = github.context.payload.pull_request.sender;
         console.log(`owner: ${JSON.stringify(owner)}.`);
