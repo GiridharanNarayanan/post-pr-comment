@@ -1,9 +1,28 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-try {
-    const prId = core.getInput('pull_request_id');
-    console.log(`This is the given PR: ${prId}.`);
-} catch (error) {
-    core.setFailed(error.message);
+async function run() {
+    try {
+        const prId = core.getInput('pull_request_id');
+        const token = core.getInput('github_token', { required: true });
+
+        const client = new github.GitHub(token);
+        const pullRequestNumber = github.context.payload.number;
+        const pullRequest = github.context.payload.pull_request;
+        const owner = pullRequest.sender.id;
+        const repo = pullRequest.repository.id;
+        const commentBody = "comment body";
+        const response = await client.issues.createComment({
+            owner,
+            repo,
+            pullRequestNumber,
+            commentBody
+        });
+
+        console.log(`This is the given PR: ${prId}.`);
+    } catch (error) {
+        core.setFailed(error.message);
+    }
 }
+
+run();

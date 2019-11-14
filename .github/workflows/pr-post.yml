@@ -8,8 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Post comment to PR
     steps:
-      - name: Upload the application settings
+      - name: Commenting on a PR
         id: upload_app_settings_id
         uses: GiridharanNarayanan/post-pr-comment@master
         with:
           pull_request_id: 1
+          github_token: ${{ secrets.GITHUB_TOKEN }}
