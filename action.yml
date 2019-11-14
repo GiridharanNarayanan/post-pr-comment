@@ -1,8 +1,8 @@
 name: 'Post PR comment'
 description: 'Post a comment in the PR with the given ID'
 inputs:
-  pull_request_id:  # id of input
-    description: 'PR number'
+  github_token:  # id of input
+    description: 'Github token'
     required: true
     default: ''
 runs:
