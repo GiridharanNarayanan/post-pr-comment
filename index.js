@@ -7,8 +7,12 @@ async function run() {
         const token = core.getInput('github_token', { required: true });
 
         const client = new github.GitHub(token);
+        console.log(`owner: ${JSON.stringify(github.context.payload)}.`);
+
         const pullRequestNumber = github.context.payload.number;
         const pullRequest = github.context.payload.pull_request;
+        console.log(`pullrequest: ${JSON.stringify(pullRequest)}.`);
+
         const owner = pullRequest.sender;
         console.log(`owner: ${JSON.stringify(owner)}.`);
 
