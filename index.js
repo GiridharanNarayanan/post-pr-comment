@@ -15,7 +15,7 @@ async function run() {
         const repo = pullRequest.base.repo.name;
         console.log(`repo: ${repo}.`);
 
-        const owner = pullRequest.base.repo.owner.name;
+        const owner = pullRequest.base.repo.owner.login;
         console.log(`owner: ${owner}.`);
         
         const commentBody = "comment body";
