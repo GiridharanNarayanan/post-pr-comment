@@ -1,0 +1,24 @@
+{
+  "name": "post-pr-comment",
+  "version": "1.0.0",
+  "description": "Repository to test an action to post a message to the PR from a workflow",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GiridharanNarayanan/post-pr-comment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GiridharanNarayanan/post-pr-comment/issues"
+  },
+  "homepage": "https://github.com/GiridharanNarayanan/post-pr-comment#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^1.1.0"
+  }
+}
