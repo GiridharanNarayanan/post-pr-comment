@@ -15,8 +15,8 @@ async function run() {
         const repo = pullRequest.base.repo.name;
         console.log(`repo: ${repo}.`);
 
-        const owner = pullRequest.base.repo.owner.login;
-        console.log(`owner: ${owner}.`);
+        const owner = pullRequest.base.repo.owner;
+        console.log(`owner: ${JSON.stringify(owner)}.`);
         
         const commentBody = "comment body";
         const response = await client.issues.createComment({
